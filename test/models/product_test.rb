@@ -54,4 +54,15 @@ class ProductTest < ActiveSupport::TestCase
     assert product.invalid?
     assert_equal [ "has already been taken" ], product.errors[:title]
   end
+
+  test "product title length should be aleast 10" do
+    product = new_product("zzz.jpg")
+    product.title = "ksdj"
+
+    assert product.invalid?
+    assert_equal [ "length should be atreat 10." ], product.errors[:title]
+
+    product.title = "1234567891"
+    assert product.valid?
+  end
 end

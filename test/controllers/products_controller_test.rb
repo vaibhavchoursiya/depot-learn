@@ -27,6 +27,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should show product" do
     get product_url(@product)
     assert_response :success
+    assert_select "div p", 4
   end
 
   test "should get edit" do
